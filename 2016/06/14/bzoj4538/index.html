@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>bzoj4538:[Hnoi2016]网络 | zmh&#39;blog</title>
+  <meta name="author" content="zmh">
+  
+  <meta name="description" content="把链取反然后树剖就行了。为啥考场上想不到？">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="bzoj4538:[Hnoi2016]网络"/>
+  <meta property="og:site_name" content="zmh&#39;blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="zmh&#39;blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" /><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header" class="inner"><div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+		<div class="header-div">
+		    <h1><a href="/">zmh&#39;blog</a></h1>
+		    <h2><a href="/"></a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/">首页</a></li>
+		    		
+		    		  <li><a href="/archives">归档</a></li>
+		    		
+		    		  <li><a href="/about">关于我</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/guestbook">留言</a></li>
+		    
+		      <li><a href="/atom.xml">RSS</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-06-14T07:56:35.000Z"><a href="/2016/06/14/bzoj4538/">2016-06-14</a></time>
+        
+  
+    <h1 class="title">bzoj4538:[Hnoi2016]网络</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        <div id="toc" class="toc-article">
+	<div class="toc-title">目录</div>
+	<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目链接"><span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Input"><span class="toc-text">Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output"><span class="toc-text">Output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sample-Input"><span class="toc-text">Sample Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sample-Output"><span class="toc-text">Sample Output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HINT"><span class="toc-text">HINT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li></ol>
+</div>
+      
+        <p>把链取反然后树剖就行了。为啥考场上想不到？<br><a id="more"></a></p>
+<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=4538" target="_blank" rel="external">bzoj4538</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>　　一个简单的网络系统可以被描述成一棵无根树。每个节点为一个服务器。连接服务器与服务器的数据线则看做一条树边。两个服务器进行数据的交互时，数据会经过连接这两个服务器的路径上的所有服务器（包括这两个服务器自身）。由于这条路径是唯一的，当路径上的某个服务器出现故障，无法正常运行时，数据便无法交互。此外，每个数据交互请求都有一个重要度，越重要的请求显然需要得到越高的优先处理权。现在，你作为一个网络系统的管理员，要监控整个系统的运行状态。系统的运行也是很简单的，在每一个时刻，只有可能出现下列三种事件中的一种：</p>
+<p>　　1.  在某两个服务器之间出现一条新的数据交互请求；<br>　　2.  某个数据交互结束请求；<br>　　3.  某个服务器出现故障。系统会在任何故障发生后立即修复。也就是在出现故障的时刻之后，这个服务器依然是正常的。但在服务器产生故障时依然会对需要经过该服务器的数据交互请求造成影响。<br>　　你的任务是在每次出现故障时，维护未被影响的请求中重要度的最大值。注意，如果一个数据交互请求已经结束，则不将其纳入未被影响的请求范围。</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>　　第一行两个正整数n,m，分别描述服务器和事件个数。服务器编号是从1开始的，因此n个服务器的编号依次是1,2,3,…,n。接下来n-1行，每行两个正整数u,v，描述一条树边。u和v是服务器的编号。接下来m行，按发生时刻依<br>次描述每一个事件；即第i行（i=1,2,3,…,m）描述时刻i发生的事件。每行的第一个数type描述事件类型，共3种类型：<br>（1）若type=0，之后有三个正整数a,b,v，表示服务器a,b之间出现一条重要度为v的数据交互请求；<br>（2）若type=1，之后有一个正整数t，表示时刻t（也就是第t个发生的事件）出现的数据交互请求结束；<br>（3）若type=2，之后有一个正整数x，表示服务器x在这一时刻出现了故障。对于每个type为2的事件，就是一次询问，即询问“当服务器x发生故障时，未被影响的请求中重要度的最大值是多少？”<br>注意可能有某个服务器自身与自身进行数据交互的情况。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>　　对于每个type=2的事件，即服务器出现故障的事件，输出一行一个整数，描述未被影响的请求中重要度的最大值。如果此时没有任何请求，或者所有请求均被影响，则输出-1。</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><p>13 23<br>1 2<br>1 3<br>2 4<br>2 5<br>3 6<br>3 7<br>4 8<br>4 9<br>6 10<br>6 11<br>7 12<br>7 13<br>2 1<br>0 8 13 3<br>0 9 12 5<br>2 9<br>2 8<br>2 2<br>0 10 12 1<br>2 2<br>1 3<br>2 7<br>2 1<br>0 9 5 6<br>2 4<br>2 5<br>1 7<br>0 9 12 4<br>0 10 5 7<br>2 1<br>2 4<br>2 12<br>1 2<br>2 5<br>2 3 </p>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>-1<br>3<br>5<br>-1<br>1<br>-1<br>1<br>1<br>3<br>6<br>7<br>7<br>4<br>6 </p>
+<h3 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h3><p>样例给出的树如下所示：<br><img src="http://www.lydsy.com/JudgeOnline/upload/201604/222.png" alt="这里写图片描述"><br>解释其中的部分询问；下面的解释中用(a,b;t,v)表示在t时刻出现的服务器a和b之间的重要度为v的请求：<br>对于第一个询问（在时刻1），此时没有任何请求，输出-1。<br>对于第四个询问（在时刻6），此时有两条交互(8,13;2,3),(9,12;3,5)，所有询问均经过2号服务器，输出-1。<br>对于第五个询问（在时刻8），此时有三条交互(8,13;2,3),(9,12;3,5),(10,12;7,1)，只有交互(10,12;7,1)没有经过2号服务器，因此输出其重要度1。<br>对于最后一个询问（在时刻23），此时有三条交互(9,5;12,6),(9,12;16,4),(10,5;17,7)。当3号服务器出现故障时，只有交互(9,5;12,6)没有经过3号服务器，因此输出6。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>我们考虑树剖，线段树上维护一个堆，保存不经过该段区间的路径的权值。<br>对于一条路径我们将对于线段树中的区间提取出来，在将区间取反，在对于线段树中进行修改。也就是在堆中插入或删除。<br>对于一次询问，只要找到包含该点的线段中堆顶权值最大的就行了。</p>
+<p>还有一种做法是考虑二分答案，如果大于答案的边都经过询问点，则往小的二分否则往大的二分。这样我们只要维护路径的交集。用rmq求lca的话可以做到O(1)求出两条路径的交集。可以离散后用线段树维护二分结构，并在对应的节点上记录路径交集，就可以在$O(log n)$ 内回答询问了。</p>
+<hr>
+<p>这里提供第一种做法的代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100010</span>;</span><br><span class="line"><span class="keyword">struct</span> Heap&#123;</span><br><span class="line">    priority_queue&lt;<span class="keyword">int</span>&gt;a,b;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;b.push(x);&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;a.push(x);&#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(!b.empty()&amp;&amp;a.top()==b.top()) a.pop(),b.pop();</span><br><span class="line">        <span class="keyword">if</span>(a.empty()) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">return</span> a.top();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;t[N*<span class="number">4</span>];</span><br><span class="line"><span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; &gt;stk;</span><br><span class="line"><span class="keyword">struct</span> edge&#123;<span class="keyword">int</span> x,nex;&#125;e[N*<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> size[N],son[N],top[N],dep[N],dfn[N],fa[N],first[N];</span><br><span class="line"><span class="keyword">int</span> n,m,op,tp,x[N*<span class="number">2</span>],y[N*<span class="number">2</span>],z[N*<span class="number">2</span>],tot,cnt;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    e[++tot].x=y;</span><br><span class="line">    e[tot].nex=first[x];</span><br><span class="line">    first[x]=tot;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    size[x]=<span class="number">1</span>; fa[x]=y; dep[x]=dep[y]+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=first[x];i;i=e[i].nex)</span><br><span class="line">    <span class="keyword">if</span>(e[i].x!=y)&#123;</span><br><span class="line">        dfs1(e[i].x,x);</span><br><span class="line">        <span class="keyword">if</span>(size[son[x]]&lt;size[e[i].x]) son[x]=e[i].x;</span><br><span class="line">        size[x]+=size[e[i].x];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs2</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    dfn[x]=++cnt; top[x]=y;</span><br><span class="line">    <span class="keyword">if</span>(son[x]) dfs2(son[x],y);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=first[x];i;i=e[i].nex)</span><br><span class="line">    <span class="keyword">if</span>(e[i].x!=fa[x]&amp;&amp;e[i].x!=son[x]) dfs2(e[i].x,e[i].x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> ql,<span class="keyword">int</span> qr,<span class="keyword">int</span> val,<span class="keyword">int</span> flag)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(ql&gt;qr) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span>(ql==l&amp;&amp;qr==r)&#123;</span><br><span class="line">        <span class="keyword">if</span>(flag) t[k].push(val); </span><br><span class="line">        <span class="keyword">else</span> t[k].del(val);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(l&lt;=mid) modify(k*<span class="number">2</span>,l,mid,ql,min(qr,mid),val,flag);</span><br><span class="line">    <span class="keyword">if</span>(r&gt;mid) modify(k*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,r,max(mid+<span class="number">1</span>,ql),qr,val,flag);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">updata</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> val,<span class="keyword">int</span> flag)</span></span>&#123;</span><br><span class="line">    stk.clear();</span><br><span class="line">    <span class="keyword">while</span>(top[x]!=top[y])&#123;</span><br><span class="line">        <span class="keyword">if</span>(dep[top[x]]&lt;dep[top[y]]) swap(x,y);</span><br><span class="line">        stk.push_back(make_pair(dfn[top[x]],dfn[x]));</span><br><span class="line">        x=fa[top[x]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dep[x]&lt;dep[y]) swap(x,y);</span><br><span class="line">    stk.push_back(make_pair(dfn[y],dfn[x]));</span><br><span class="line">    sort(stk.begin(),stk.end());</span><br><span class="line">    x=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;(<span class="keyword">int</span>)stk.size();i++)&#123;</span><br><span class="line">        modify(<span class="number">1</span>,<span class="number">1</span>,n,x,stk[i].first<span class="number">-1</span>,val,flag);</span><br><span class="line">        x=stk[i].second+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    modify(<span class="number">1</span>,<span class="number">1</span>,n,x,n,val,flag);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r) <span class="keyword">return</span> t[k].top();</span><br><span class="line">    <span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(x&lt;=mid) <span class="keyword">return</span> max(t[k].top(),query(k*<span class="number">2</span>,l,mid,x));</span><br><span class="line">    <span class="keyword">return</span> max(t[k].top(),query(k*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,r,x));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;x[<span class="number">0</span>],&amp;y[<span class="number">0</span>]);</span><br><span class="line">        add(x[<span class="number">0</span>],y[<span class="number">0</span>]); add(y[<span class="number">0</span>],x[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs1(<span class="number">1</span>,<span class="number">0</span>); dfs2(<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;tp);</span><br><span class="line">        <span class="keyword">if</span>(tp==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;x[i],&amp;y[i],&amp;z[i]);</span><br><span class="line">            updata(x[i],y[i],z[i],<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(tp==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x[i]);</span><br><span class="line">            updata(x[x[i]],y[x[i]],z[x[i]],<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(tp==<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;x[i]);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,query(<span class="number">1</span>,<span class="number">1</span>,n,dfn[x[i]]));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/算法/">算法</a>, <a href="/categories/算法/数据结构/">数据结构</a>, <a href="/categories/算法/数据结构/树分治/">树分治</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/树链剖分/">树链剖分</a>
+  </div>
+
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+		
+<div class="prev_next clearfix">
+  
+    <a href="/2016/06/14/bzoj4537/" class="alignleft prev" title="bzoj4537:[Hnoi2016]最小公倍数">bzoj4537:[Hnoi2016]最小公倍数</a>
+  
+  
+    <a href="/2016/06/14/bzoj4539/" class="alignright next" title="bzoj4539:[hnoi2016]树">bzoj4539:[hnoi2016]树</a>
+  
+</div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+	
+	  
+
+		
+</section>
+
+
+  
+<section id="comment">
+<!--   <h1 class="title">留言</h1> -->
+
+
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="2016/06/14/bzoj4538/" data-title="bzoj4538:[Hnoi2016]网络" data-url="http://964685331.github.io/2016/06/14/bzoj4538/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"964685331"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+
+  
+</section>
+
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+   <div class="search">
+  <form action="https://www.google.com.hk/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:964685331.github.io">
+  </form>
+</div> 
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">36</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/其他/">其他</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/其他/单纯形/">单纯形</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/其他/莫队/">莫队</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/">动态规划</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/仙人掌dp/">仙人掌dp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/基于连通性的状压dp/">基于连通性的状压dp</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/斜率优化/">斜率优化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/">图论</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/2-SAT/">2-SAT</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/图的连通性/">图的连通性</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/平面图/">平面图</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/最短路/">最短路</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/生成树/">生成树</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/生成树/矩阵树定理/">矩阵树定理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/网络流/">网络流</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/网络流/上下界网络流/">上下界网络流</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/字符串/">字符串</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/字符串/后缀自动机/">后缀自动机</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/">数学</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/FFT/">FFT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/数论/">数论</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/组合计数/">组合计数</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/高斯消元/">高斯消元</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/">数据结构</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/link-cut-tree/">link-cut-tree</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/splay/">splay</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/主席树/">主席树</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/分块/">分块</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/树分治/">树分治</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/树链剖分/">树链剖分</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/线段树/">线段树</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/链表/">链表</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/计算几何/">计算几何</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/计算几何/旋转卡壳/">旋转卡壳</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul> 
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/2-SAT/" style="font-size: 12px;">2-SAT</a> <a href="/tags/FFT/" style="font-size: 12px;">FFT</a> <a href="/tags/LCT/" style="font-size: 12px;">LCT</a> <a href="/tags/splay/" style="font-size: 10px;">splay</a> <a href="/tags/上下界网络流/" style="font-size: 10px;">上下界网络流</a> <a href="/tags/主席树/" style="font-size: 12px;">主席树</a> <a href="/tags/仙人掌/" style="font-size: 10px;">仙人掌</a> <a href="/tags/位运算/" style="font-size: 10px;">位运算</a> <a href="/tags/凸包/" style="font-size: 12px;">凸包</a> <a href="/tags/分块/" style="font-size: 12px;">分块</a> <a href="/tags/动态规划/" style="font-size: 18px;">动态规划</a> <a href="/tags/单纯形/" style="font-size: 10px;">单纯形</a> <a href="/tags/双向链表/" style="font-size: 10px;">双向链表</a> <a href="/tags/后缀数组计数/" style="font-size: 10px;">后缀数组计数</a> <a href="/tags/后缀自动机/" style="font-size: 10px;">后缀自动机</a> <a href="/tags/坐标变换/" style="font-size: 10px;">坐标变换</a> <a href="/tags/平面图/" style="font-size: 10px;">平面图</a> <a href="/tags/强连通分量/" style="font-size: 10px;">强连通分量</a> <a href="/tags/总结/" style="font-size: 20px;">总结</a> <a href="/tags/插头dp/" style="font-size: 12px;">插头dp</a> <a href="/tags/数论/" style="font-size: 16px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/旋转卡壳/" style="font-size: 10px;">旋转卡壳</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 14px;">树链剖分</a> <a href="/tags/桥和割顶/" style="font-size: 14px;">桥和割顶</a> <a href="/tags/模板/" style="font-size: 10px;">模板</a> <a href="/tags/生成树计数/" style="font-size: 12px;">生成树计数</a> <a href="/tags/矩阵乘法/" style="font-size: 10px;">矩阵乘法</a> <a href="/tags/矩阵树定理/" style="font-size: 10px;">矩阵树定理</a> <a href="/tags/线段树/" style="font-size: 14px;">线段树</a> <a href="/tags/线段树合并/" style="font-size: 10px;">线段树合并</a> <a href="/tags/组合数/" style="font-size: 14px;">组合数</a> <a href="/tags/莫队/" style="font-size: 14px;">莫队</a> <a href="/tags/行列式/" style="font-size: 10px;">行列式</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/随机化/" style="font-size: 10px;">随机化</a> <a href="/tags/高斯消元/" style="font-size: 10px;">高斯消元</a>
+  </div>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://blog.csdn.net/pbtfclx" title="PbTfcLx">PbTfcLx</a></li>
+<li><a href="http://fhxb520630.blog.163.com" title="fhxb520630">fhxb520630</a></li>
+<li><a href="http://blog.csdn.net/zmh964685331" title="zmh的博客">我的旧博客</a></li>
+</ul>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/07/08/test7-8/">7-8考试总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/07/test7-7/">7-7考试总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/06/test7-6/">7-6考试总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/05/SADPAIRS/">Codechef_SADPAIRS</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/05/test7-5/">7-5考试总结</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  <div class="widget">
+  <h3 class="title">最新评论</h3>
+  	<!-- 多说最新评论 start -->
+	<div class="ds-recent-comments ds-recent-user" data-num-items="3" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+	<!-- 多说最新评论 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"964685331"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+  <div class="widget tag">
+  <h3 class="title">最近访客</h3>
+    <div class="ds-recent-visitors" data-num-items="15" data-avatar-size="45" id="ds-recent-visitors"></div>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">宠物</h3>
+<BUNNYHERO PET START />
+<div style="width: 250px; padding: 0; margin: 0; text-align: center">
+<embed src="http://petswf.bunnyherolabs.com/adopt/swf/fox" width="250" height="300" quality="high" bgcolor="ffffff" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="cn=fox&an=zmh&clr=0xe65b00" type="application/x-shockwave-flash">
+</embed><br />
+</div>
+<BUNNYHERO PET END />
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2019 zmh
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?88b52b05e9c1ff80c8f73b9f743be74a";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
+
+
+<a href="https://github.com/964685331" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>

@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>bzoj1494生成树计数 | zmh&#39;blog</title>
+  <meta name="author" content="zmh">
+  
+  <meta name="description" content="生成树计数问题。可以用状压dp解决。但需要矩乘加速。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="bzoj1494生成树计数"/>
+  <meta property="og:site_name" content="zmh&#39;blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="zmh&#39;blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" /><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header" class="inner"><div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+		<div class="header-div">
+		    <h1><a href="/">zmh&#39;blog</a></h1>
+		    <h2><a href="/"></a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/">首页</a></li>
+		    		
+		    		  <li><a href="/archives">归档</a></li>
+		    		
+		    		  <li><a href="/about">关于我</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/guestbook">留言</a></li>
+		    
+		      <li><a href="/atom.xml">RSS</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-07-04T09:10:48.000Z"><a href="/2016/07/04/bzoj1494/">2016-07-04</a></time>
+        
+  
+    <h1 class="title">bzoj1494生成树计数</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        <div id="toc" class="toc-article">
+	<div class="toc-title">目录</div>
+	<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目链接"><span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Input"><span class="toc-text">Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output"><span class="toc-text">Output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sample-Input"><span class="toc-text">Sample Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sample-Output"><span class="toc-text">Sample Output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HINT"><span class="toc-text">HINT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li></ol>
+</div>
+      
+        <p>生成树计数问题。可以用状压dp解决。但需要矩乘加速。<br><a id="more"></a></p>
+<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=1494" target="_blank" rel="external">bzoj1494</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>最近，小栋在无向连通图的生成树个数计算方面有了惊人的进展，他发现：<br>·n个结点的环的生成树个数为n。<br>·n个结点的完全图的生成树个数为n^(n-2)。这两个发现让小栋欣喜若狂，由此更加坚定了他继续计算生成树个数的<br>想法，他要计算出各种各样图的生成树数目。一天，小栋和同学聚会，大家围坐在一张大圆桌周围。小栋看了看，<br>马上想到了生成树问题。如果把每个同学看成一个结点，邻座（结点间距离为1）的同学间连一条边，就变成了一<br>个环。可是，小栋对环的计数已经十分娴熟且不再感兴趣。于是，小栋又把图变了一下：不仅把邻座的同学之间连<br>一条边，还把相隔一个座位（结点间距离为2）的同学之间也连一条边，将结点间有边直接相连的这两种情况统称<br>为有边相连，如图1所示。</p>
+<p><img src="http://www.lydsy.com/JudgeOnline/upload/201602/1%281%29.png" alt=""><br>小栋以前没有计算过这类图的生成树个数，但是，他想起了老师讲过的计算任意图的生成树个数的一种通用方法：<br>构造一个n×n的矩阵A={aij},其中<br><img src="http://www.lydsy.com/JudgeOnline/upload/201602/2%283%29.png" alt=""></p>
+<p>其中di表示结点i的度数。与图1相应的A矩阵如下所示。为了计算图1所对应的生成数的个数，只要去掉矩阵A的最<br>后一行和最后一列，得到一个(n-1)×(n-1)的矩阵B，计算出矩阵B的行列式的值便可得到图1的生成树的个数所以<br>生成树的个数为|B|=3528。小栋发现利用通用方法，因计算过于复杂而很难算出来，而且用其他方法也难以找到更<br>简便的公式进行计算。于是，他将图做了简化，从一个地方将圆桌断开，这样所有的同学形成了一条链，连接距离<br>为1和距离为2的点。例如八个点的情形如下：<br><img src="http://www.lydsy.com/JudgeOnline/upload/201602/3%282%29.png" alt=""></p>
+<p>这样生成树的总数就减少了很多。小栋不停的思考，一直到聚会结束，终于找到了一种快捷的方法计算出这个图的<br>生成树个数。可是，如果把距离为3的点也连起来，小栋就不知道如何快捷计算了。现在，请你帮助小栋计算这类<br>图的生成树的数目。</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>包含两个整数k,n，由一个空格分隔。k表示要将所有距离不超过k（含k）的结点连接起来，n表示有n个结点。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>输出一个整数，表示生成树的个数。由于答案可能比较大，所以你 只要输出答案除65521 的余数即可。</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><pre><code>3 5
+</code></pre><h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><pre><code>75
+</code></pre><h3 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h3><p><img src="http://www.lydsy.com/JudgeOnline/images/1494_5.jpg" alt=""><br><img src="http://www.lydsy.com/JudgeOnline/images/1494_4.jpg" alt=""></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>其实正解不是矩阵树定理，而是状压dp。</p>
+<p>用最小表示法记录前k个点的连通状况。$2^k$ 枚举每种连边处理处所有转移然后矩阵乘法优化即可。</p>
+<p>说起来简单但还是有很多细节。比如转移时要保证当前这个点的前面第k个点一定有边与后面相连，否则整个图就不连通了。同时枚举连边方案时不能有环。前k个点的生成树个数可以预处理出来。具体做法就是看每个联通块的大小，连通块内是个完全图，题面里给出了计算放案，再将所有连通块的方案乘起来即可。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> k,cnt,mo=<span class="number">65521</span>,ans;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> n;</span><br><span class="line"><span class="keyword">int</span> ord[<span class="number">100010</span>],sta[<span class="number">100</span>],f[<span class="number">10</span>],h[<span class="number">100</span>];</span><br><span class="line"><span class="keyword">int</span> g[<span class="number">100</span>][<span class="number">100</span>],a[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> use=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>*k;i+=<span class="number">3</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!(s&gt;&gt;i&amp;<span class="number">7</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;(s&gt;&gt;i&amp;<span class="number">7</span>);j++)</span><br><span class="line">        <span class="keyword">if</span>(!(use&gt;&gt;j&amp;<span class="number">1</span>)) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        use|=<span class="number">1</span>&lt;&lt;(s&gt;&gt;i&amp;<span class="number">7</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> x==f[x]?x:f[x]=get(f[x]);&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a[][<span class="number">100</span>],<span class="keyword">int</span> b[][<span class="number">100</span>])</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tmp[<span class="number">100</span>][<span class="number">100</span>];</span><br><span class="line">    <span class="built_in">memset</span>(tmp,<span class="number">0</span>,<span class="keyword">sizeof</span>(tmp));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++)</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt;j++)</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>;l&lt;=cnt;l++)</span><br><span class="line">      tmp[i][j]=(tmp[i][j]+<span class="number">1l</span>l*a[i][l]*b[l][j])%mo;</span><br><span class="line">    <span class="built_in">memcpy</span>(a,tmp,<span class="keyword">sizeof</span>(tmp));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%lld"</span>,&amp;k,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">1</span>&lt;&lt;(<span class="number">3</span>*k);i++)</span><br><span class="line">    <span class="keyword">if</span>(check(i)) sta[++cnt]=i,ord[i]=cnt;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++)&#123;</span><br><span class="line">        h[i]=<span class="number">1</span>; <span class="built_in">memset</span>(f,<span class="number">0</span>,<span class="keyword">sizeof</span>(f));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">3</span>*k;j+=<span class="number">3</span>) f[sta[i]&gt;&gt;j&amp;<span class="number">7</span>]++;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=k;j++)</span><br><span class="line">        <span class="keyword">if</span>(f[j]==<span class="number">3</span>) h[i]*=<span class="number">3</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(f[j]==<span class="number">4</span>) h[i]*=<span class="number">16</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(f[j]==<span class="number">5</span>) h[i]*=<span class="number">125</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++)</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">int</span> s=<span class="number">0</span>;s&lt;<span class="number">1</span>&lt;&lt;k;s++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=k;j++) f[j]=j;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">3</span>*k;j+=<span class="number">3</span>)</span><br><span class="line">         <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;<span class="number">3</span>*k;l+=<span class="number">3</span>)</span><br><span class="line">         <span class="keyword">if</span>((sta[i]&gt;&gt;j&amp;<span class="number">7</span>)==(sta[i]&gt;&gt;l&amp;<span class="number">7</span>))</span><br><span class="line">         f[get(j/<span class="number">3</span>)]=get(l/<span class="number">3</span>);</span><br><span class="line">        <span class="keyword">int</span> flag=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;k;j++)</span><br><span class="line">        <span class="keyword">if</span>(s&gt;&gt;j&amp;<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(get(j)==get(k))&#123;flag=<span class="number">1</span>; <span class="keyword">break</span>;&#125;</span><br><span class="line">            f[get(j)]=get(k);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=k;j++)</span><br><span class="line">        <span class="keyword">if</span>(get(<span class="number">0</span>)==get(j))&#123;flag=<span class="number">1</span>; <span class="keyword">break</span>;&#125;</span><br><span class="line">        <span class="keyword">if</span>(!flag) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="keyword">int</span> now=<span class="number">0</span>,use=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">3</span>*k;j+=<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(now&gt;&gt;j&amp;<span class="number">7</span>) <span class="keyword">continue</span>;</span><br><span class="line">            now|=(++use)&lt;&lt;j;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> l=j+<span class="number">3</span>;l&lt;<span class="number">3</span>*k;l+=<span class="number">3</span>)</span><br><span class="line">            <span class="keyword">if</span>(get(j/<span class="number">3</span>+<span class="number">1</span>)==get(l/<span class="number">3</span>+<span class="number">1</span>))</span><br><span class="line">            now|=use&lt;&lt;l;</span><br><span class="line">        &#125;</span><br><span class="line">        g[i][ord[now]]++;</span><br><span class="line">     &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++) a[i][i]=<span class="number">1</span>;</span><br><span class="line">    n-=k;</span><br><span class="line">    <span class="keyword">for</span>(;n;n&gt;&gt;=<span class="number">1</span>,mul(g,g))</span><br><span class="line">    <span class="keyword">if</span>(n&amp;<span class="number">1</span>) mul(a,g);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++)</span><br><span class="line">    ans=(ans+<span class="number">1l</span>l*h[i]*a[i][<span class="number">1</span>])%mo;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/算法/">算法</a>, <a href="/categories/算法/动态规划/">动态规划</a>, <a href="/categories/算法/动态规划/基于连通性的状压dp/">基于连通性的状压dp</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/生成树计数/">生成树计数</a>, <a href="/tags/矩阵乘法/">矩阵乘法</a>
+  </div>
+
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+		
+<div class="prev_next clearfix">
+  
+    <a href="/2016/07/04/test7-4/" class="alignleft prev" title="7-4考试总结">7-4考试总结</a>
+  
+  
+    <a href="/2016/07/04/bzoj4596/" class="alignright next" title="bzoj4596黑暗前的幻想乡">bzoj4596黑暗前的幻想乡</a>
+  
+</div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+	
+	  
+
+		
+</section>
+
+
+  
+<section id="comment">
+<!--   <h1 class="title">留言</h1> -->
+
+
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="2016/07/04/bzoj1494/" data-title="bzoj1494生成树计数" data-url="http://964685331.github.io/2016/07/04/bzoj1494/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"964685331"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+
+  
+</section>
+
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+   <div class="search">
+  <form action="https://www.google.com.hk/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:964685331.github.io">
+  </form>
+</div> 
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">36</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/其他/">其他</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/其他/单纯形/">单纯形</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/其他/莫队/">莫队</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/">动态规划</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/仙人掌dp/">仙人掌dp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/基于连通性的状压dp/">基于连通性的状压dp</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/斜率优化/">斜率优化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/">图论</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/2-SAT/">2-SAT</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/图的连通性/">图的连通性</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/平面图/">平面图</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/最短路/">最短路</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/生成树/">生成树</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/生成树/矩阵树定理/">矩阵树定理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/网络流/">网络流</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/网络流/上下界网络流/">上下界网络流</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/字符串/">字符串</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/字符串/后缀自动机/">后缀自动机</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/">数学</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/FFT/">FFT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/数论/">数论</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/组合计数/">组合计数</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/高斯消元/">高斯消元</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/">数据结构</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/link-cut-tree/">link-cut-tree</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/splay/">splay</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/主席树/">主席树</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/分块/">分块</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/树分治/">树分治</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/树链剖分/">树链剖分</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/线段树/">线段树</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/链表/">链表</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/计算几何/">计算几何</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/计算几何/旋转卡壳/">旋转卡壳</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul> 
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/2-SAT/" style="font-size: 12px;">2-SAT</a> <a href="/tags/FFT/" style="font-size: 12px;">FFT</a> <a href="/tags/LCT/" style="font-size: 12px;">LCT</a> <a href="/tags/splay/" style="font-size: 10px;">splay</a> <a href="/tags/上下界网络流/" style="font-size: 10px;">上下界网络流</a> <a href="/tags/主席树/" style="font-size: 12px;">主席树</a> <a href="/tags/仙人掌/" style="font-size: 10px;">仙人掌</a> <a href="/tags/位运算/" style="font-size: 10px;">位运算</a> <a href="/tags/凸包/" style="font-size: 12px;">凸包</a> <a href="/tags/分块/" style="font-size: 12px;">分块</a> <a href="/tags/动态规划/" style="font-size: 18px;">动态规划</a> <a href="/tags/单纯形/" style="font-size: 10px;">单纯形</a> <a href="/tags/双向链表/" style="font-size: 10px;">双向链表</a> <a href="/tags/后缀数组计数/" style="font-size: 10px;">后缀数组计数</a> <a href="/tags/后缀自动机/" style="font-size: 10px;">后缀自动机</a> <a href="/tags/坐标变换/" style="font-size: 10px;">坐标变换</a> <a href="/tags/平面图/" style="font-size: 10px;">平面图</a> <a href="/tags/强连通分量/" style="font-size: 10px;">强连通分量</a> <a href="/tags/总结/" style="font-size: 20px;">总结</a> <a href="/tags/插头dp/" style="font-size: 12px;">插头dp</a> <a href="/tags/数论/" style="font-size: 16px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/旋转卡壳/" style="font-size: 10px;">旋转卡壳</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 14px;">树链剖分</a> <a href="/tags/桥和割顶/" style="font-size: 14px;">桥和割顶</a> <a href="/tags/模板/" style="font-size: 10px;">模板</a> <a href="/tags/生成树计数/" style="font-size: 12px;">生成树计数</a> <a href="/tags/矩阵乘法/" style="font-size: 10px;">矩阵乘法</a> <a href="/tags/矩阵树定理/" style="font-size: 10px;">矩阵树定理</a> <a href="/tags/线段树/" style="font-size: 14px;">线段树</a> <a href="/tags/线段树合并/" style="font-size: 10px;">线段树合并</a> <a href="/tags/组合数/" style="font-size: 14px;">组合数</a> <a href="/tags/莫队/" style="font-size: 14px;">莫队</a> <a href="/tags/行列式/" style="font-size: 10px;">行列式</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/随机化/" style="font-size: 10px;">随机化</a> <a href="/tags/高斯消元/" style="font-size: 10px;">高斯消元</a>
+  </div>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://blog.csdn.net/pbtfclx" title="PbTfcLx">PbTfcLx</a></li>
+<li><a href="http://fhxb520630.blog.163.com" title="fhxb520630">fhxb520630</a></li>
+<li><a href="http://blog.csdn.net/zmh964685331" title="zmh的博客">我的旧博客</a></li>
+</ul>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/07/08/test7-8/">7-8考试总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/07/test7-7/">7-7考试总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/06/test7-6/">7-6考试总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/05/SADPAIRS/">Codechef_SADPAIRS</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/05/test7-5/">7-5考试总结</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  <div class="widget">
+  <h3 class="title">最新评论</h3>
+  	<!-- 多说最新评论 start -->
+	<div class="ds-recent-comments ds-recent-user" data-num-items="3" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+	<!-- 多说最新评论 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"964685331"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+  <div class="widget tag">
+  <h3 class="title">最近访客</h3>
+    <div class="ds-recent-visitors" data-num-items="15" data-avatar-size="45" id="ds-recent-visitors"></div>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">宠物</h3>
+<BUNNYHERO PET START />
+<div style="width: 250px; padding: 0; margin: 0; text-align: center">
+<embed src="http://petswf.bunnyherolabs.com/adopt/swf/fox" width="250" height="300" quality="high" bgcolor="ffffff" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="cn=fox&an=zmh&clr=0xe65b00" type="application/x-shockwave-flash">
+</embed><br />
+</div>
+<BUNNYHERO PET END />
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2019 zmh
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?88b52b05e9c1ff80c8f73b9f743be74a";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
+
+
+<a href="https://github.com/964685331" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>

@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>bzoj4541:[Hnoi2016]矿区 | zmh&#39;blog</title>
+  <meta name="author" content="zmh">
+  
+  <meta name="description" content="题目链接第一道平面图题。想法很有趣。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="bzoj4541:[Hnoi2016]矿区"/>
+  <meta property="og:site_name" content="zmh&#39;blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="zmh&#39;blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" /><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header" class="inner"><div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+		<div class="header-div">
+		    <h1><a href="/">zmh&#39;blog</a></h1>
+		    <h2><a href="/"></a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/">首页</a></li>
+		    		
+		    		  <li><a href="/archives">归档</a></li>
+		    		
+		    		  <li><a href="/about">关于我</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/guestbook">留言</a></li>
+		    
+		      <li><a href="/atom.xml">RSS</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-06-14T07:37:14.000Z"><a href="/2016/06/14/bzoj4541/">2016-06-14</a></time>
+        
+  
+    <h1 class="title">bzoj4541:[Hnoi2016]矿区</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        <div id="toc" class="toc-article">
+	<div class="toc-title">目录</div>
+	<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#题目链接"><span class="toc-text">题目链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目描述"><span class="toc-text">题目描述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Description"><span class="toc-text">Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Input"><span class="toc-text">Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output"><span class="toc-text">Output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sample-Input"><span class="toc-text">Sample Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sample-Output"><span class="toc-text">Sample Output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HINT"><span class="toc-text">HINT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题解"><span class="toc-text">题解</span></a></li></ol>
+</div>
+      
+        <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p>第一道平面图题。想法很有趣。<br><a id="more"></a><br><a href="http://www.lydsy.com/JudgeOnline/problem.php?id=4541" target="_blank" rel="external">bzoj4541</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>　　平面上的矿区划分成了若干个开发区域。</p>
+<pre><code>简单地说，你可以将矿区看成一张连通的平面图，平面图划分为了若干平面块，每个平面块即为一个开发区域，平面块之间的边界必定由若干整点(坐标值为整数的点)和连接这些整点的线段组成。每个开发区域的矿量与该开发区域的面积有关：具体而言，面积为s的开发区域的矿量为 s^2。现在有 m 个开采计划。每个开采计划都指定了一个由若干开发区域组成的多边形，一个开采计划的优先度被规定为矿量的总和÷开发区域的面积和；例如，若某开采计划指定两个开发区域，面积分别为 a和b，则优先度为(a^2+b^2)/(a+b)。由于平面图是按照划分开发区域边界的点和边给出的，因此每个开采计划也只说明了其指定多边形的边界，并未详细指明是哪些开发区域（但很明显，只要给出了多边形的边界就可以求出是些开发区域）。你的任务是求出每个开采计划的优先度。为了避免精度问题，你的答案必须按照分数的格式输出，即求出分子和分母，且必须是最简形式（分子和分母都为整数，而且都消除了最大公约数；例如，若矿量总和是 1.5，面积和是2，那么分子应为3，分母应为4；又如，若矿量和是 2，面积和是 4，那么分子应为 1，分母应为 2）。由于某些原因，你必须依次对每个开采计划求解（即下一个开采计划会按一定格式加密，加密的方式与上一个开采计划的答案有关）。具体的加密方式见输入格式。
+</code></pre><h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>　　第一行三个正整数 n,m,k，分别描述平面图中的点和边，以及开采计划的个数。接下来n行，第 i行(i=1,2,…,n)有两个整数x_i, y_i,  表示点i的坐标为(x_i, y_i)。接下来m行，第 i行有两个正整数a,b，表示点a和b 之间有一条边。接下来一行若干个整数，依次描述每个开采计划。每个开采计划的第一个数c指出该开采计划由开发区域组成的多边形边界上的点的个数为d=(c+P) mod n + 1；接下来d个整数，按逆时针方向描述边界上的每一个点：设其中第i个数为z_i，则第i个点的编号为(z_i+P) mod n + 1。其中P 是上一个开采计划的答案中分子的值；对于第 1 个开采计划，P=0。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>　　对于每个开采计划，输出一行两个正整数，分别描述分子和分母。</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><p>9 14 5<br>0 0<br>1 0<br>2 0<br>0 1<br>1 1<br>2 1<br>0 2<br>1 2<br>2 2<br>1 2<br>2 3<br>5 6<br>7 8<br>8 9<br>1 4<br>4 7<br>5 8<br>3 6<br>6 9<br>4 8<br>1 5<br>2 6<br>6 8<br>3 3 0 4 7 1 3 4 6 4 8 0 4 3 6 2 3 8 0 4 6 2 5 0 4 5 7 6 3   </p>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>1 1<br>1 2<br>1 1<br>9 10<br>3 4 </p>
+<h3 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h3><p>输入文件给出的9个点和14条边描述的平面图如下所示：<br><img src="http://www.lydsy.com/JudgeOnline/upload/201604/111.png" alt="这里写图片描述"><br>第一个开采计划，输入的第1个值为3，所以该开采计划对应的多边形有(3+0) mod 8 +1=4个点，将接下的4个数3,0,4,7，分别代入(z_i+0) mod n + 1得到4个点的编号为4,1,5,8。计算出第一个开采计划的分子为1，分母为1。<br>类似地，可计算出余下开采计划的多边形的点数和点的编号：<br>第二个开采计划对应的多边形有3个点，编号分别为5, 6, 8。<br>第三个开采计划对应的多边形有6个点，编号分别为1, 2, 6, 5, 8, 4。<br>第四个开采计划对应的多边形有5个点，编号分别为1, 2, 6, 8, 4。<br>第五个开采计划对应的多边形有6个点，编号分别为1, 5, 6, 8, 7, 4。<br>对于100%的数据，n, k ≤ 2×10^5, m ≤ 3n-6,  |x_ i|,|y_i| ≤ 3×10^4。所有开采计划的d之和不超过2×10^6。保证任何开采计划都包含至少一个开发区域，且这些开发区域构成一个连通块。保证所有开发区域的矿量和不超过 2^63-1。保证平面图中没有多余的点和边。保证数据合法。由于输入数据量较大，建议使用读入优化。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>考虑求出平面图的对偶图，平面图中的一个区域在对偶图中就是一个点。我们得到对偶图的dfs树。对于一个开采计划，一定包括了对偶图中的若干条边，并且这些边圈出了对偶图中的一个点集，这些点就是需要开采的点。我们记录一下dfs树的子树点权和，那么对于询问的一条树边我们判断它是进入子树还是离开子树，对应的答案加上或减去子树的权值和。对于非树边直接忽略就好了。</p>
+<hr>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> BUF[<span class="number">2000001</span>],*buf,*end;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> getch() (buf==end?fread(BUF,1,2000000,stdin),buf=BUF,end=buf+2000000,*(buf++):*(buf++))</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Read</span><span class="params">(<span class="keyword">int</span> &amp;x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">char</span> c;</span><br><span class="line">	<span class="keyword">int</span> f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(c=getchar();c&lt;<span class="string">'0'</span>||c&gt;<span class="string">'9'</span>;c=getchar()) <span class="keyword">if</span>(c==<span class="string">'-'</span>) f=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(x=<span class="number">0</span>;c&gt;=<span class="string">'0'</span>&amp;&amp;c&lt;=<span class="string">'9'</span>;c=getchar()) x=x*<span class="number">10</span>+c-<span class="string">'0'</span>;</span><br><span class="line">	x=x*f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">200010</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">struct</span> point&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y;</span><br><span class="line">	<span class="keyword">friend</span> ll <span class="keyword">operator</span> *(<span class="keyword">const</span> point &amp;a,<span class="keyword">const</span> point &amp;b)&#123;</span><br><span class="line">		<span class="keyword">return</span> (ll)a.x*b.y-(ll)b.x*a.y;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">friend</span> point <span class="keyword">operator</span> -(<span class="keyword">const</span> point &amp;a,<span class="keyword">const</span> point &amp;b)&#123;</span><br><span class="line">		point tmp;</span><br><span class="line">		tmp.x=a.x-b.x; tmp.y=a.y-b.y;</span><br><span class="line">		<span class="keyword">return</span> tmp;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;p[N];</span><br><span class="line"><span class="keyword">struct</span> edge&#123;</span><br><span class="line">	<span class="keyword">int</span> u,v,id;</span><br><span class="line">	<span class="keyword">double</span> ang;</span><br><span class="line">	edge()&#123;&#125;</span><br><span class="line">	edge(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> k)&#123;</span><br><span class="line">		u=a; v=b; id=k;</span><br><span class="line">		ang=<span class="built_in">atan2</span>((<span class="keyword">double</span>)p[b].y-p[a].y,(<span class="keyword">double</span>)p[b].x-p[a].x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> edge &amp;a,<span class="keyword">const</span> edge &amp;b)&#123;</span><br><span class="line">		<span class="keyword">return</span> a.ang&lt;b.ang;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;e[<span class="number">6</span>*N];</span><br><span class="line"><span class="built_in">vector</span>&lt;edge&gt; E[N],TE[N*<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> Nex[N*<span class="number">6</span>],v[N*<span class="number">6</span>],cnt=<span class="number">1</span>,num,rt;</span><br><span class="line"><span class="keyword">int</span> vi[N*<span class="number">2</span>],fa[N*<span class="number">2</span>],flag[N*<span class="number">6</span>];</span><br><span class="line"><span class="keyword">int</span> n,m,k,x,y,rec,q[N];</span><br><span class="line">ll ans1,ans2,P,S[N*<span class="number">2</span>],S1[N*<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">const</span> edge &amp;a)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> mid,l=<span class="number">0</span>,r=E[x].size();</span><br><span class="line">	<span class="keyword">while</span>(r-l&gt;<span class="number">1</span>)&#123;</span><br><span class="line">		mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(a&lt;E[x][mid]) r=mid;</span><br><span class="line">		<span class="keyword">else</span> l=mid;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">gcd</span><span class="params">(ll a,ll b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(b==<span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line">	<span class="keyword">return</span> gcd(b,a%b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> now,tmp,st; ll s;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=cnt;i++)</span><br><span class="line">	<span class="keyword">if</span>(!v[i])&#123;</span><br><span class="line">		s=<span class="number">0</span>; now=i; v[i]=++num; st=e[i].u;</span><br><span class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">			tmp=Nex[now]; v[tmp]=num;</span><br><span class="line">			<span class="keyword">if</span>(e[tmp].v==st) <span class="keyword">break</span>;</span><br><span class="line">			s+=(p[e[tmp].u]-p[st])*(p[e[tmp].v]-p[st]);</span><br><span class="line">			now=tmp;</span><br><span class="line">		&#125;</span><br><span class="line">		S[num]=s;</span><br><span class="line">		<span class="keyword">if</span>(s&lt;=<span class="number">0</span>) rt=num;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=cnt;i++) </span><br><span class="line">	TE[v[i]].push_back(edge(v[i],v[i^<span class="number">1</span>],i));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	vi[x]=<span class="number">1</span>; S1[x]=S[x]*S[x]; S[x]*=<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;(<span class="keyword">int</span>)TE[x].size();i++)</span><br><span class="line">	<span class="keyword">if</span>(!vi[TE[x][i].v])&#123;</span><br><span class="line">		fa[TE[x][i].v]=x;</span><br><span class="line">		flag[TE[x][i].id]=<span class="number">1</span>;</span><br><span class="line">		flag[TE[x][i].id^<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">		dfs(TE[x][i].v);</span><br><span class="line">		S[x]+=S[TE[x][i].v];</span><br><span class="line">		S1[x]+=S1[TE[x][i].v];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Read(n); Read(m); Read(k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) Read(p[i].x),Read(p[i].y);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) &#123;</span><br><span class="line">		Read(x); Read(y);</span><br><span class="line">		++cnt; e[cnt]=edge(x,y,cnt);</span><br><span class="line">		E[x].push_back(e[cnt]);</span><br><span class="line">		++cnt; e[cnt]=edge(y,x,cnt);</span><br><span class="line">		E[y].push_back(e[cnt]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) sort(E[i].begin(),E[i].end());</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=cnt;i++)&#123;</span><br><span class="line">		Nex[i]=Find(e[i].v,e[i^<span class="number">1</span>])<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">if</span>(Nex[i]&lt;<span class="number">0</span>) Nex[i]=E[e[i].v].size()<span class="number">-1</span>;</span><br><span class="line">		Nex[i]=E[e[i].v][Nex[i]].id;</span><br><span class="line">	&#125;</span><br><span class="line">	solve(); dfs(rt);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)&#123;</span><br><span class="line">		Read(q[<span class="number">0</span>]); q[<span class="number">0</span>]=(q[<span class="number">0</span>]+P)%n+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=q[<span class="number">0</span>];j++) Read(q[j]),q[j]=(q[j]+P)%n+<span class="number">1</span>;</span><br><span class="line">		ans1=ans2=<span class="number">0</span>; q[++q[<span class="number">0</span>]]=q[<span class="number">1</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;q[<span class="number">0</span>];j++)&#123;</span><br><span class="line">			x=q[j]; y=q[j+<span class="number">1</span>];</span><br><span class="line">			<span class="keyword">int</span> tmp=Find(x,edge(x,y,<span class="number">0</span>));</span><br><span class="line">			tmp=E[x][tmp].id;</span><br><span class="line">			<span class="keyword">if</span>(!flag[tmp]) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(v[tmp]==fa[v[tmp^<span class="number">1</span>]]) ans1+=S[v[tmp^<span class="number">1</span>]],ans2+=S1[v[tmp^<span class="number">1</span>]];</span><br><span class="line">			<span class="keyword">else</span> ans1-=S[v[tmp]],ans2-=S1[v[tmp]];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(ans1&lt;<span class="number">0</span>) ans1=-ans1,ans2=-ans2;</span><br><span class="line">		ll d=gcd(ans1,ans2); ans1/=d; ans2/=d;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld %lld\n"</span>,P=ans2,ans1);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/算法/">算法</a>, <a href="/categories/算法/图论/">图论</a>, <a href="/categories/算法/图论/平面图/">平面图</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/平面图/">平面图</a>, <a href="/tags/模板/">模板</a>
+  </div>
+
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+		
+<div class="prev_next clearfix">
+  
+    <a href="/2016/06/14/bzoj4542/" class="alignleft prev" title="bzoj4542:[Hnoi2016]大数">bzoj4542:[Hnoi2016]大数</a>
+  
+  
+    <a href="/2016/06/14/bzoj3265/" class="alignright next" title="bzoj3265:志愿者招募加强版">bzoj3265:志愿者招募加强版</a>
+  
+</div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+	
+	  
+
+		
+</section>
+
+
+  
+<section id="comment">
+<!--   <h1 class="title">留言</h1> -->
+
+
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="2016/06/14/bzoj4541/" data-title="bzoj4541:[Hnoi2016]矿区" data-url="http://964685331.github.io/2016/06/14/bzoj4541/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"964685331"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+
+  
+</section>
+
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+   <div class="search">
+  <form action="https://www.google.com.hk/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:964685331.github.io">
+  </form>
+</div> 
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">36</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/其他/">其他</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/其他/单纯形/">单纯形</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/其他/莫队/">莫队</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/">动态规划</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/仙人掌dp/">仙人掌dp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/基于连通性的状压dp/">基于连通性的状压dp</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/斜率优化/">斜率优化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/">图论</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/2-SAT/">2-SAT</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/图的连通性/">图的连通性</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/平面图/">平面图</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/最短路/">最短路</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/生成树/">生成树</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/生成树/矩阵树定理/">矩阵树定理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/网络流/">网络流</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/网络流/上下界网络流/">上下界网络流</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/字符串/">字符串</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/字符串/后缀自动机/">后缀自动机</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/">数学</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/FFT/">FFT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/数论/">数论</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/组合计数/">组合计数</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/高斯消元/">高斯消元</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/">数据结构</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/link-cut-tree/">link-cut-tree</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/splay/">splay</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/主席树/">主席树</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/分块/">分块</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/树分治/">树分治</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/树链剖分/">树链剖分</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/线段树/">线段树</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/链表/">链表</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/计算几何/">计算几何</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/计算几何/旋转卡壳/">旋转卡壳</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul> 
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/2-SAT/" style="font-size: 12px;">2-SAT</a> <a href="/tags/FFT/" style="font-size: 12px;">FFT</a> <a href="/tags/LCT/" style="font-size: 12px;">LCT</a> <a href="/tags/splay/" style="font-size: 10px;">splay</a> <a href="/tags/上下界网络流/" style="font-size: 10px;">上下界网络流</a> <a href="/tags/主席树/" style="font-size: 12px;">主席树</a> <a href="/tags/仙人掌/" style="font-size: 10px;">仙人掌</a> <a href="/tags/位运算/" style="font-size: 10px;">位运算</a> <a href="/tags/凸包/" style="font-size: 12px;">凸包</a> <a href="/tags/分块/" style="font-size: 12px;">分块</a> <a href="/tags/动态规划/" style="font-size: 18px;">动态规划</a> <a href="/tags/单纯形/" style="font-size: 10px;">单纯形</a> <a href="/tags/双向链表/" style="font-size: 10px;">双向链表</a> <a href="/tags/后缀数组计数/" style="font-size: 10px;">后缀数组计数</a> <a href="/tags/后缀自动机/" style="font-size: 10px;">后缀自动机</a> <a href="/tags/坐标变换/" style="font-size: 10px;">坐标变换</a> <a href="/tags/平面图/" style="font-size: 10px;">平面图</a> <a href="/tags/强连通分量/" style="font-size: 10px;">强连通分量</a> <a href="/tags/总结/" style="font-size: 20px;">总结</a> <a href="/tags/插头dp/" style="font-size: 12px;">插头dp</a> <a href="/tags/数论/" style="font-size: 16px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/旋转卡壳/" style="font-size: 10px;">旋转卡壳</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 14px;">树链剖分</a> <a href="/tags/桥和割顶/" style="font-size: 14px;">桥和割顶</a> <a href="/tags/模板/" style="font-size: 10px;">模板</a> <a href="/tags/生成树计数/" style="font-size: 12px;">生成树计数</a> <a href="/tags/矩阵乘法/" style="font-size: 10px;">矩阵乘法</a> <a href="/tags/矩阵树定理/" style="font-size: 10px;">矩阵树定理</a> <a href="/tags/线段树/" style="font-size: 14px;">线段树</a> <a href="/tags/线段树合并/" style="font-size: 10px;">线段树合并</a> <a href="/tags/组合数/" style="font-size: 14px;">组合数</a> <a href="/tags/莫队/" style="font-size: 14px;">莫队</a> <a href="/tags/行列式/" style="font-size: 10px;">行列式</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/随机化/" style="font-size: 10px;">随机化</a> <a href="/tags/高斯消元/" style="font-size: 10px;">高斯消元</a>
+  </div>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://blog.csdn.net/pbtfclx" title="PbTfcLx">PbTfcLx</a></li>
+<li><a href="http://fhxb520630.blog.163.com" title="fhxb520630">fhxb520630</a></li>
+<li><a href="http://blog.csdn.net/zmh964685331" title="zmh的博客">我的旧博客</a></li>
+</ul>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/07/08/test7-8/">7-8考试总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/07/test7-7/">7-7考试总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/06/test7-6/">7-6考试总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/05/SADPAIRS/">Codechef_SADPAIRS</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/05/test7-5/">7-5考试总结</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  <div class="widget">
+  <h3 class="title">最新评论</h3>
+  	<!-- 多说最新评论 start -->
+	<div class="ds-recent-comments ds-recent-user" data-num-items="3" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+	<!-- 多说最新评论 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"964685331"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+  <div class="widget tag">
+  <h3 class="title">最近访客</h3>
+    <div class="ds-recent-visitors" data-num-items="15" data-avatar-size="45" id="ds-recent-visitors"></div>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">宠物</h3>
+<BUNNYHERO PET START />
+<div style="width: 250px; padding: 0; margin: 0; text-align: center">
+<embed src="http://petswf.bunnyherolabs.com/adopt/swf/fox" width="250" height="300" quality="high" bgcolor="ffffff" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="cn=fox&an=zmh&clr=0xe65b00" type="application/x-shockwave-flash">
+</embed><br />
+</div>
+<BUNNYHERO PET END />
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2019 zmh
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?88b52b05e9c1ff80c8f73b9f743be74a";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+</body>
+</html>
+
+
+<a href="https://github.com/964685331" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>

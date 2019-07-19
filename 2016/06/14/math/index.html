@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>数论 | zmh&#39;blog</title>
+  <meta name="author" content="zmh">
+  
+  <meta name="description" content="总结了一些比较简单的数论算法">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="数论"/>
+  <meta property="og:site_name" content="zmh&#39;blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="zmh&#39;blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta name="wumiiVerification" content="fb50a101-84fe-4ca2-91a7-ae8cf792978b" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="wumiiVerification" content="d73b5866-c390-4156-a4dd-51b526b5335e" /><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><header id="header" class="inner"><div class= "header-content inner">
+	<div class = "alignleft col-one">
+		
+		<div class="header-div">
+		    <h1><a href="/">zmh&#39;blog</a></h1>
+		    <h2><a href="/"></a></h2>
+		</div>
+	</div>
+	<div class = "alignright col-two">
+		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+<div class= "header-nav">
+	<div class='header-nav-content inner'>
+		<div id="main-nav" class="alignleft">
+			<ul>
+		    		
+		    		  <li><a href="/">首页</a></li>
+		    		
+		    		  <li><a href="/archives">归档</a></li>
+		    		
+		    		  <li><a href="/about">关于我</a></li>
+		    		
+		    	</ul>
+		</div>
+		<div id="sub-nav" class="alignright">
+     	 <ul>
+		    
+		      <li><a href="/guestbook">留言</a></li>
+		    
+		      <li><a href="/atom.xml">RSS</a></li>
+		    
+     	 </ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+        <div class="icon"></div>
+        
+        <time datetime="2016-06-14T05:17:38.000Z"><a href="/2016/06/14/math/">2016-06-14</a></time>
+        
+  
+    <h1 class="title">数论</h1>
+  
+
+    </header>
+
+    <div class="entry">
+      
+        <div id="toc" class="toc-article">
+	<div class="toc-title">目录</div>
+	<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-取模运算"><span class="toc-text">一.取模运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-乘法取模"><span class="toc-text">1.乘法取模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-除法取模"><span class="toc-text">2.除法取模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-乘方取模"><span class="toc-text">3.乘方取模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-组合数取模"><span class="toc-text">4.组合数取模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-同余方程"><span class="toc-text">5.同余方程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-质数"><span class="toc-text">二.质数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-质数的求法"><span class="toc-text">1.质数的求法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-质数的判断"><span class="toc-text">2.质数的判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-质因数分解"><span class="toc-text">3.质因数分解</span></a></li></ol></li></ol>
+</div>
+      
+        <p>总结了一些比较简单的数论算法<br><a id="more"></a></p>
+<h2 id="一-取模运算"><a href="#一-取模运算" class="headerlink" title="一.取模运算"></a>一.取模运算</h2><h3 id="1-乘法取模"><a href="#1-乘法取模" class="headerlink" title="1.乘法取模"></a>1.乘法取模</h3><p>1.计算$a*b\mod p$其中$a,b,p&lt;=10^{12}$</p>
+<p>我们考虑long long的范围：$-2^{63}\dots2^{63}-1$<br>我们观察这题的特殊性，a和b还有取模p大小都大约是$10^{12}$。<br>我们不妨折中一下，令<br>$a=a_1+a_0*10^6$<br>$b=b_1+b_0*10^6$<br>其中$0≤a_0,a_1,b_0,b_1≤10^6$。</p>
+<p>那么$a*b=(a_1+a_0*10^6)*(b_1+b_0*10^6)$<br>即$a*b=a_1*b_1+a_0*b_1*10^6+a_1*b_0*10^6+a_0*b_0*10^{12}$。</p>
+<p>我们发现$a_1*b_1，a_0*b_1*10^6，a_1*b_0*10^6$这三项都在long long范围内。我们改变一下最后一项的计算顺序<br>$a_0*b_0*10^{12} \mod p=(a_0*(b_0*10^{12} \mod p)) \mod p$<br>于是所有的东西都可以在long long以内计算出来了！ </p>
+<p>2.计算$a*b\mod p$其中$a,b,p&lt;=10^{18}$。</p>
+<p>a和b已经很接近long long的上界，稍微乘一下就会爆掉。<br>注意到这一点，他们乘一个2还是不会爆，我们考虑如何利用这一点。<br>我们令b的二进制表示为$b=b_{62}\dots b_1b_0$<br>即$b=2^{62}*b_{62}+\dots+2*b_1+b_0$<br>这里，$0≤b_{62},\dots,b_1,b_0 ≤1$。</p>
+<p>于是$a*b=a*(2^{62}*b_{62}+\dots+2*b_1+b_0)$<br>乘法分配率 $a*b=2^{62}*a*b_{62}+\dots+2*a*b_1+a*b_0$<br>于是对于每一个项都是a乘上若干个2，然后把他们加起来，这就很容易办到了！复杂度$O(logn)$。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">mul</span><span class="params">(ll x,ll y,ll m)</span></span>&#123;</span><br><span class="line">	ll tmp=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>,x=x*<span class="number">2</span>%m)</span><br><span class="line">	<span class="keyword">if</span>(y&amp;<span class="number">1</span>) tmp=(tmp+x)%m;</span><br><span class="line">	<span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-除法取模"><a href="#2-除法取模" class="headerlink" title="2.除法取模"></a>2.除法取模</h3><p>当我们要求（a / b） mod p的值，且 a 很大，无法直接求得a / b的值时，我们就要用到乘法逆元。<br>满足 b * k ≡ 1 (mod p) 的 k 的值就是 b 关于 p 的乘法逆元。<br>我们可以通过求 b 关于 p 的乘法逆元 k，将 a 乘上 k 再模 p，即 (a * k) mod p。其结果与(a / b) mod p等价。</p>
+<p>如何求逆元呢？<br>1.费马小定理<br>当a与p互质且p为质数时：<br>$a^{p-1}\mod p==1$<br>则$a*a^{p-2}\mod p==1$<br>所以a的逆元就是$a^{p-2}\mod p$。</p>
+<p>2.扩展欧几里得：<br>当p不为质数时，若a与p不互质，则无逆元。否则可用扩展欧几里得求出。<br>具体见：<a href="http://codevs.cn/problem/1200/" target="_blank" rel="external">noip2012同余方程</a></p>
+<h3 id="3-乘方取模"><a href="#3-乘方取模" class="headerlink" title="3.乘方取模"></a>3.乘方取模</h3><p>1.求$a^{f_n}\mod p,f_n$ 表示斐波拉契数列的第n项。其中$n&lt;=10^6,a&lt;p&lt;=10^9$且$p$为质数。</p>
+<p>$f_n$会很大，尔我们不能直接对$f_n$取模。所以还是费马小定理：<br>$a^{p-1}\mod p==1$<br>我们设$f_n=x*(p-1)+y,x=[\frac{f_n}{p-1}],y=f_n\mod (p-1)$。<br>那么$a^{f_n}=a^{x*(p-1)+y}=a^{p-1}*a^{p-1}*a^{p-1}*\dots *a^{p-1}*a^y$<br>所以$a^{f_n}\mod p=a^{f_n \mod (p-1)} \mod p$<br>求出$f_n \mod (p-1)$直接快速幂计算即可。</p>
+<h3 id="4-组合数取模"><a href="#4-组合数取模" class="headerlink" title="4.组合数取模"></a>4.组合数取模</h3><p>1.给定n和m$(0≤m≤n≤100,000)$，求出$C_n^m\mod 1,000,000,009$<br>p=1,000,000,009是一个质数。</p>
+<p>如果n和m比较小，我们可以考虑杨辉三角递推。<br>利用递推式计算，需要O(nm)的时间，难以承受！</p>
+<p>我们只有考虑组合数通式$C_n^m=\frac{n!}{m!(n-m)!}$,预处理阶乘及其逆元，直接计算即可。预处理过程如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fac[<span class="number">0</span>]=<span class="number">1</span>; <span class="comment">//fac表示阶乘</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++) fac[i]=fac[i<span class="number">-1</span>]*i%p;</span><br><span class="line">nfac[N]=power(fac[N],p<span class="number">-2</span>,p); <span class="comment">//nfac表示阶乘逆元</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=N<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--) nfac[i]=nfac[i+<span class="number">1</span>]*(i+<span class="number">1</span>)%p;</span><br></pre></td></tr></table></figure></p>
+<p>2.给定n和m$(0≤m≤n≤10^9)$，求出$C_n^m\mod 10,009$<br>p=10,009是一个质数。</p>
+<p>注意到，质数模小了很多，我们将这一点作为这题的突破口。<br>接下来我们介绍Lucas定理：<br>对于质数p，如果<br>$n=n_k*p^k+n_{k-1}*p^{k-1}+\dots+n_1*p+n_0$<br>$m=m_k*p^k+m_{k-1}*p^{k-1}+\dots+m_1*p+m_0$<br>则<br>$$C_n^m=\prod_{i=0}^kC_{n_i}^{m_i}\mod p$$<br>我们可以把n和m在p进制下分解，把$C_n^m$变成若干个$C_{n_i}^{m_i }$的乘积，然后依次计算即可。<br>在p进制下分解，n和m的长度都不会超过O(logn)，又每个$n_i$和$m_i$都不超过p，可直接用例1的做法。预处理阶乘及其逆元后我们可以做到$O(logn)$</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">Lucas</span><span class="params">(ll n,ll m,ll p)</span></span>&#123;</span><br><span class="line">    ll x,y,tmp=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(n!=<span class="number">0</span>&amp;&amp;m!=<span class="number">0</span>)&#123;</span><br><span class="line">        x=n%p; y=m%p;</span><br><span class="line">        <span class="keyword">if</span>(x&lt;y)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        tmp=tmp*fac[x]%p*nfac[y]%p*nfac[x-y]%p;</span><br><span class="line">        n/=p; m/=p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-同余方程"><a href="#5-同余方程" class="headerlink" title="5.同余方程"></a>5.同余方程</h3><p>1.线性同余方程组求解。<br>$$<br>\begin{cases}<br>x≡a_1 (\mod m_1 )\newline<br>x≡a_2 (\mod m_2 )\newline<br>\dots \newline<br>x≡a_n (\mod m_n )\newline<br>\end{cases}<br>$$<br>其中$m_1,m_2,m_3…m_n$互质。</p>
+<p>中国剩余定理：<br>令$M=\prod m_i,M_i=\frac M{m_i}$<br>令$M_i$在模$m_i$意义下的模逆元素是$t_i$，即$M_i *t_i≡1(\mod m_i )$<br>则同余方程组的通解为$x=\sum_{i=1}^na_it_iM_i+kM$<br>这里的$t_i$只能用扩展欧几里得解得。因为$m_i$不一定为质数。</p>
+<p>2.给定n和m$(0≤m≤n≤100,000)$，求出$C_n^m\mod 111795145$</p>
+<p>这里的模数111795145不是质数，无法像之前那样求解。<br>注意到111795145=5*7*11*17*19*29*31。记5，7，11，17，19，29，31为$m_1,m_2,…,m_7$,我们可以先求得$a_i=C_n^m \mod m_i$。那么答案就是<br>$$<br>\begin{cases}<br>x≡a_1 (\mod m_1 )\newline<br>x≡a_2 (\mod m_2 )\newline<br>\dots \newline<br>x≡a_n (\mod m_n )\newline<br>\end{cases}<br>$$<br>的一组解。注意到通解$x=\sum_{i=1}^na_it_iM_i+kM$，其中M=111795145。<br>也就是说$\sum_{i=1}^na_it_iM_i \mod M$就是我们要的结果。</p>
+<h2 id="二-质数"><a href="#二-质数" class="headerlink" title="二.质数"></a>二.质数</h2><h3 id="1-质数的求法"><a href="#1-质数的求法" class="headerlink" title="1.质数的求法"></a>1.质数的求法</h3><p>普通筛法求质数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;  i&lt;N;  i++)         </span><br><span class="line"><span class="keyword">if</span> (prime[i]) &#123;          </span><br><span class="line">	primes[++cnt]=i;     </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=i*<span class="number">2</span>;k&lt;N;k+=i) prime[k]=<span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>复杂度$O(n loglogn)$,我们可以用调和级数证明它的复杂度最多为$O(nlogn)$ 因为$\frac n1+\frac n2+\frac n3+\dots+\frac nn=n(1+\frac 12+\frac13+\dots+\frac1n)&lt;n*ln(n) $。</p>
+<p>线性筛法：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;N;i++)&#123;            </span><br><span class="line">	<span class="keyword">if</span>(!isNotPrime[i]) prime[num_prime++]=i;  </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;num_prime&amp;&amp;i*prime[j]&lt;N;j++)&#123;               </span><br><span class="line">		isNotPrime[i*prime[j]]=<span class="number">1</span>;  </span><br><span class="line">	  	<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) <span class="keyword">break</span>; <span class="comment">//这是关键</span></span><br><span class="line">	&#125;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>精华就在于关键那处，它们保证每个合数只会被它的最小质因数筛去，因此每个数只会被标记一次，所以时间复杂度是O(n)。为什么保证了这一点？大家自己推推吧。</p>
+<h3 id="2-质数的判断"><a href="#2-质数的判断" class="headerlink" title="2.质数的判断"></a>2.质数的判断</h3><p>1.枚举2…$\sqrt n$判断，复杂度$O(\sqrt n)$。<br>2.Miller Rabin算法。<br>费马小定理<br>假如a是整数，p是质数，且a,p互质(即两者只有一个公约数1)，那么a的(p-1)次方除以p的余数恒等于1</p>
+<p>我们可以利用质数的这一性质来判定质数。我们多次随机2…n-1内的数a，若a的n-1次方模n不为1，则n不是质数。若随机多组均为1，则n是质数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(N==<span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">if</span>(N==<span class="number">2</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++)&#123; <span class="comment">//随机10次</span></span><br><span class="line">	<span class="keyword">int</span> a=rand()%(N<span class="number">-2</span>)+<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">if</span>(power(a,N<span class="number">-1</span>,N)!=<span class="number">1</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="comment">//power(a,b,c)表示a的b次幂模c。</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<p>这是一个随机算法，出错的概率很小，但我们还可以优化。</p>
+<p>二次探测定理：<br>如果p是奇素数，则 $x^2 ≡ 1(mod p)$的解为 $x = 1 或x = p - 1(mod p)$;</p>
+<p>可以利用二次探测定理在实现Miller-Rabin上添加一些细节，具体实现如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Miller_Rabin</span><span class="params">(ll n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">2</span>)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;<span class="number">2</span>||!(n&amp;<span class="number">1</span>))<span class="keyword">return</span> <span class="literal">false</span>;  </span><br><span class="line">	ll u=n<span class="number">-1</span>,t=<span class="number">0</span>,x,y;</span><br><span class="line">	<span class="keyword">while</span>((u&amp;<span class="number">1</span>)==<span class="number">0</span>) u/=<span class="number">2</span>,t++; </span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">10</span>;i++)&#123;</span><br><span class="line">		x=rand()%(n<span class="number">-2</span>)+<span class="number">2</span>;</span><br><span class="line">		x=power(x,u,n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=t;j++)&#123;</span><br><span class="line">			y=x*x%n;</span><br><span class="line">			<span class="keyword">if</span>(y==<span class="number">1</span>&amp;&amp;x!=<span class="number">1</span>&amp;&amp;x!=n<span class="number">-1</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			x=y;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(x!=<span class="number">1</span>)<span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-质因数分解"><a href="#3-质因数分解" class="headerlink" title="3.质因数分解"></a>3.质因数分解</h3><p>1.一个数的质因数个数是log级别的。<br>2.一个数最多有1个大于$\sqrt n$ 的质因子。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i*i&lt;=N;i++)</span><br><span class="line"><span class="keyword">while</span>(N%i==<span class="number">0</span>)&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,i);</span><br><span class="line">	N/=i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(N&gt;<span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,N);</span><br></pre></td></tr></table></figure></p>
+<p>复杂度是$O(\sqrt n)$。我们也可以先筛出质数，然后i直接枚举质数。<br>3.pollar rho算法。<br>具体思想及证明见<a href="http://www.cnblogs.com/jackiesteed/articles/2019910.html" target="_blank" rel="external">http://www.cnblogs.com/jackiesteed/articles/2019910.html</a><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">pollar_rho</span><span class="params">(ll n,ll c)</span></span>&#123;</span><br><span class="line">	ll x,y,d,s=<span class="number">1</span>,t=<span class="number">2</span>;</span><br><span class="line">	x=y=rand()%(n<span class="number">-1</span>)+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		x=(mul(x,x,n)+c)%n;</span><br><span class="line">		d=gcd(<span class="built_in">abs</span>(x-y),n);</span><br><span class="line">		<span class="keyword">if</span>(d!=<span class="number">1</span>&amp;&amp;d!=n)<span class="keyword">return</span> d;</span><br><span class="line">		<span class="keyword">if</span>(y==x)<span class="keyword">return</span> n;</span><br><span class="line">		<span class="keyword">if</span>(++s==t) y=x,t*=<span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">(ll n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Miller_Rabin(n))&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,n);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ll x=pollar_rho(n,rand()%n+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span>(x&gt;=n)x=pollar_rho(n,rand()%n+<span class="number">1</span>);</span><br><span class="line">	work(n/x);</span><br><span class="line">	work(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/算法/">算法</a>, <a href="/categories/算法/数学/">数学</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/数论/">数论</a>, <a href="/tags/总结/">总结</a>
+  </div>
+
+        <div class = "counter">
+  <span id="busuanzi_container_page_pv" style="display:none">
+      总访问&nbsp<span id="busuanzi_value_page_pv"></span>&nbsp次
+  </span>
+</div>
+        
+  <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+  <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+		
+<div class="prev_next clearfix">
+  
+    <a href="/2016/06/14/bzoj1069/" class="alignleft prev" title="bzoj1069:SCOI2007最大土地面积">bzoj1069:SCOI2007最大土地面积</a>
+  
+  
+    <a href="/2016/06/02/hdu3560/" class="alignright next" title="hdu3560区间取min与区间求和">hdu3560区间取min与区间求和</a>
+  
+</div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <section id = "relate">
+	
+	  
+
+		
+</section>
+
+
+  
+<section id="comment">
+<!--   <h1 class="title">留言</h1> -->
+
+
+    <!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="2016/06/14/math/" data-title="数论" data-url="http://964685331.github.io/2016/06/14/math/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"964685331"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+
+  
+</section>
+
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+   <div class="search">
+  <form action="https://www.google.com.hk/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:964685331.github.io">
+  </form>
+</div> 
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/个人/">个人</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">36</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/其他/">其他</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/其他/单纯形/">单纯形</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/其他/莫队/">莫队</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/">动态规划</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/仙人掌dp/">仙人掌dp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/基于连通性的状压dp/">基于连通性的状压dp</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/动态规划/斜率优化/">斜率优化</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/">图论</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/2-SAT/">2-SAT</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/图的连通性/">图的连通性</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/平面图/">平面图</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/最短路/">最短路</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/生成树/">生成树</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/生成树/矩阵树定理/">矩阵树定理</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/网络流/">网络流</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/图论/网络流/上下界网络流/">上下界网络流</a><span class="category-list-count">1</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/字符串/">字符串</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/字符串/后缀自动机/">后缀自动机</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/">数学</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/FFT/">FFT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/数论/">数论</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/组合计数/">组合计数</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数学/高斯消元/">高斯消元</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/">数据结构</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/link-cut-tree/">link-cut-tree</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/splay/">splay</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/主席树/">主席树</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/分块/">分块</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/树分治/">树分治</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/树链剖分/">树链剖分</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/线段树/">线段树</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/数据结构/链表/">链表</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/计算几何/">计算几何</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/算法/计算几何/旋转卡壳/">旋转卡壳</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul> 
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">标签云</h3>
+  <div class="entry">
+    <a href="/tags/2-SAT/" style="font-size: 12px;">2-SAT</a> <a href="/tags/FFT/" style="font-size: 12px;">FFT</a> <a href="/tags/LCT/" style="font-size: 12px;">LCT</a> <a href="/tags/splay/" style="font-size: 10px;">splay</a> <a href="/tags/上下界网络流/" style="font-size: 10px;">上下界网络流</a> <a href="/tags/主席树/" style="font-size: 12px;">主席树</a> <a href="/tags/仙人掌/" style="font-size: 10px;">仙人掌</a> <a href="/tags/位运算/" style="font-size: 10px;">位运算</a> <a href="/tags/凸包/" style="font-size: 12px;">凸包</a> <a href="/tags/分块/" style="font-size: 12px;">分块</a> <a href="/tags/动态规划/" style="font-size: 18px;">动态规划</a> <a href="/tags/单纯形/" style="font-size: 10px;">单纯形</a> <a href="/tags/双向链表/" style="font-size: 10px;">双向链表</a> <a href="/tags/后缀数组计数/" style="font-size: 10px;">后缀数组计数</a> <a href="/tags/后缀自动机/" style="font-size: 10px;">后缀自动机</a> <a href="/tags/坐标变换/" style="font-size: 10px;">坐标变换</a> <a href="/tags/平面图/" style="font-size: 10px;">平面图</a> <a href="/tags/强连通分量/" style="font-size: 10px;">强连通分量</a> <a href="/tags/总结/" style="font-size: 20px;">总结</a> <a href="/tags/插头dp/" style="font-size: 12px;">插头dp</a> <a href="/tags/数论/" style="font-size: 16px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 10px;">斜率优化</a> <a href="/tags/旋转卡壳/" style="font-size: 10px;">旋转卡壳</a> <a href="/tags/最短路/" style="font-size: 10px;">最短路</a> <a href="/tags/树状数组/" style="font-size: 10px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 14px;">树链剖分</a> <a href="/tags/桥和割顶/" style="font-size: 14px;">桥和割顶</a> <a href="/tags/模板/" style="font-size: 10px;">模板</a> <a href="/tags/生成树计数/" style="font-size: 12px;">生成树计数</a> <a href="/tags/矩阵乘法/" style="font-size: 10px;">矩阵乘法</a> <a href="/tags/矩阵树定理/" style="font-size: 10px;">矩阵树定理</a> <a href="/tags/线段树/" style="font-size: 14px;">线段树</a> <a href="/tags/线段树合并/" style="font-size: 10px;">线段树合并</a> <a href="/tags/组合数/" style="font-size: 14px;">组合数</a> <a href="/tags/莫队/" style="font-size: 14px;">莫队</a> <a href="/tags/行列式/" style="font-size: 10px;">行列式</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/随机化/" style="font-size: 10px;">随机化</a> <a href="/tags/高斯消元/" style="font-size: 10px;">高斯消元</a>
+  </div>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">友情链接</h3>
+<ul class="entry">
+<li><a href="http://blog.csdn.net/pbtfclx" title="PbTfcLx">PbTfcLx</a></li>
+<li><a href="http://fhxb520630.blog.163.com" title="fhxb520630">fhxb520630</a></li>
+<li><a href="http://blog.csdn.net/zmh964685331" title="zmh的博客">我的旧博客</a></li>
+</ul>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2016/07/08/test7-8/">7-8考试总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/07/test7-7/">7-7考试总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/06/test7-6/">7-6考试总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/05/SADPAIRS/">Codechef_SADPAIRS</a>
+      </li>
+    
+      <li>
+        <a href="/2016/07/05/test7-5/">7-5考试总结</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  <div class="widget">
+  <h3 class="title">最新评论</h3>
+  	<!-- 多说最新评论 start -->
+	<div class="ds-recent-comments ds-recent-user" data-num-items="3" data-show-avatars="1" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+	<!-- 多说最新评论 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"964685331"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			 || document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+		</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+  <div class="widget tag">
+  <h3 class="title">最近访客</h3>
+    <div class="ds-recent-visitors" data-num-items="15" data-avatar-size="45" id="ds-recent-visitors"></div>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">宠物</h3>
+<BUNNYHERO PET START />
+<div style="width: 250px; padding: 0; margin: 0; text-align: center">
+<embed src="http://petswf.bunnyherolabs.com/adopt/swf/fox" width="250" height="300" quality="high" bgcolor="ffffff" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="cn=fox&an=zmh&clr=0xe65b00" type="application/x-shockwave-flash">
+</embed><br />
+</div>
+<BUNNYHERO PET END />
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="footer-content inner">
+  <div class="alignleft">
+  
+    &copy; 2019 zmh
+    
+  </div>
+  <div class="alignright">
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>, Theme
+    <a href="https://github.com/pengloo53/Hexo-theme-light_cn">light_cn</a>
+  </div>
+  
+  <div class="visit">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </div>
+  
+  <div class="clearfix"></div>
+</div></footer>
+  <script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<!-- add calendar widget -->
+
+
+<!-- 添加『不蒜子』计数服务 -->
+<script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?88b52b05e9c1ff80c8f73b9f743be74a";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+<div id="toTop">
+	<a href="#">▲</a>
+	<a href="#footer">▼</a>
+</div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
+
+
+<a href="https://github.com/964685331" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
