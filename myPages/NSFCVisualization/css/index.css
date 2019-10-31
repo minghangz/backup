@@ -1,0 +1,106 @@
+/*--------------通用-----------------*/
+body{
+    font-family:"Microsoft Yahei";
+    min-width: 1200px;
+}
+/*标题*/
+h1{
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+/*可选中项目*/
+.data :hover, button{
+    cursor: pointer;
+}
+/*鼠标悬浮显示提示框*/
+.details{
+    position: absolute;
+    border: solid;
+    border-width: 2px;
+    border-color: #888888;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    word-break:break-all;
+    padding: 5px 10px;
+    display: none;
+    opacity: 0.8;
+    z-index: 1;
+    font-size: 12px;
+}
+/*图示*/
+.exp{
+    position: absolute;
+    left: 700px;
+}
+
+/*--------------表格1-----------------*/
+.part1 .table1{
+    position: absolute;
+    transform: scale(0.8) translate(-130px, -100px);
+}
+/*排序选项*/
+.part1 .order > span{
+    width: 200px;
+    display: inline-block;
+    font-size: 12px;
+}
+.part1 .btn {
+    font-size: 10px;
+}
+.part1 .order{
+    padding: 30px 25px;
+}
+/*选中项目高亮*/
+.part1 .data[switched=true] rect:nth-child(2){
+    stroke-width: 1px;
+    stroke: blue;
+}
+.part1 .data[switched=true] text{
+    fill: blue;
+}
+
+/*--------------表格2-----------------*/
+.part2 .table2{
+    position: absolute;
+    transform: scale(0.6) translate(680px, 160px);
+}
+/*选中项目高亮*/
+.part2 .data[switched=true] line{
+    stroke-width: 8px;
+    opacity: 1;
+}
+.part2 .data[switched=true] rect{
+    stroke-width: 1px;
+    stroke: blue;
+}
+.part2 .data[switched=true] text{
+    font-weight: bold;
+    fill: blue;
+}
+
+/*--------------表格3-----------------*/
+.part3 .table3{
+    position: absolute;
+    transform: scale(0.6) translate(1380px, 160px);
+}
+/*选中项目高亮*/
+.part3 .data[switched=true] line{
+    stroke-width: 8px;
+    opacity: 1;
+}
+.part3 .data[switched=true] rect{
+    stroke-width: 1px;
+    stroke: blue;
+}
+.part3 .data[switched=true] text{
+    font-weight: bold;
+    fill: blue;
+}
+
+/*--------------表格4-----------------*/
+.part4 .table4{
+    position: absolute;
+    transform: scale(0.5) translate(1430px, -387px);
+}
