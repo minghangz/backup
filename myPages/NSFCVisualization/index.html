@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>2018年优秀青年科学基金项目申请与资助情况统计</title>
+        <script type="text/javascript" src="js/jquery/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="js/d3/d3-v5.12.0/d3.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>      
+        <link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+        <!--标题及提示框-->
+        <div class="details"></div>
+        <h1>2018年优秀青年科学基金项目申请与资助情况统计</h1>
+        <!--图示-->
+        <svg class="exp" width="500" height="500"></svg>
+        <!--表格1-->
+        <div class="part1">
+            <!--数据排序选项-->
+            <div class="order">
+                <span>当前排序：<span>默认顺序</span></span>
+                <button class="btn btn-secondary" onclick=part1.sortByApplication()>按受理申请项数<span>升序&uarr;</span></button>
+                <button class="btn btn-secondary" onclick=part1.sortByApproval()>按批准资助项数<span>升序&uarr;</span></button>
+                <button class="btn btn-secondary" onclick=part1.sortByRate()>按资助率<span>升序&uarr;</span></button>
+                <button class="btn btn-secondary" onclick=part1.sortById()>恢复默认排序</button>
+            </div>
+            <!--SVG及JavaScript-->
+            <svg class="table1" width="1100" height="800"></svg>
+            <script type="text/javascript" src="js/drawTable1.js"></script>
+        </div>
+        <!--表格2-->
+        <div class="part2">
+            <svg class="table2" width="500" height="680"></svg>
+            <script type="text/javascript" src="js/drawTable2.js"></script>
+        </div>
+        <!--表格3-->
+        <div class="part3">
+            <svg class="table3" width="500" height="680"></svg>
+            <script type="text/javascript" src="js/drawTable3.js"></script>
+        </div>
+        <!--表格4-->
+        <div class="part4">
+            <svg class="table4" width="700" height="710"></svg>
+            <script type="text/javascript" src="js/drawTable4.js"></script>
+        </div>
+    </body>
+</html>
