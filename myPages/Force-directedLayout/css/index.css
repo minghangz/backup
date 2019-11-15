@@ -1,0 +1,18 @@
+body{
+    min-width: 1000px;
+}
+h1{
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+.alert{
+    margin: 20px;
+}
+svg{
+    margin: 20px;
+}
+.node:hover{
+    cursor: pointer;
+}

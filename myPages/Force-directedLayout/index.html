@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>力导向图布局</title>
+        <script type="text/javascript" src="js/jquery/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="js/d3/d3-v5.12.0/d3.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap/bootstrap-slider.js"></script>
+        <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/mathjax/es5/tex-mml-chtml.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap-slider.css">
+        <link type="text/css" rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+        <h1>力导向图布局</h1>
+
+        <div class="alert alert-info">
+            <p>
+                力学模型：\(F=-\sum_{j\in V}\frac{k^2}{d(i,j)}+\sum_{(i,j)\in E}\frac{d^2(i,j)}{k}\)
+                \((k =\)<span id="k-sliderVal">0.75</span>\(\sqrt{\frac An})\)
+            </p>
+            <p>
+                滑动调节\(k\)的大小：
+                <input id="k-value" type="text" data-slider-min="0.1" data-slider-max="1" data-slider-step="0.01" data-slider-value="0.75"/>
+            </p>
+            <p>拖动节点可改变图的布局</p>
+            <script>
+            $("#k-value").slider({tooltip_position:'bottom'});
+            $("#k-value").on("slide", function(slideEvt){
+                k = slideEvt.value;
+                $("#k-sliderVal").text(k);
+                k = k * Math.sqrt(width * height / nodesNum);
+                iterate(0.01, 0.9, 5000, getRepulsiveForce(k, 1), getTracionForce(k, 2));
+            });
+            $("#k-value").on("change", function(slideEvt){
+                k = $("#k-value").val();
+                $("#k-sliderVal").text(k);
+                k = k * Math.sqrt(width * height / nodesNum);
+                iterate(0.01, 0.9, 5000, getRepulsiveForce(k, 1), getTracionForce(k, 2));
+            });
+            </script>
+        </div>
+          
+        <svg width="800" height="800"></svg>
+        <script type="text/javascript" src="js/drawGraph.js"></script>
+    </body>
+</html>
