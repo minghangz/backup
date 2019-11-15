@@ -7,11 +7,11 @@ h1{
     background-color: #f0f0f0;
     margin: 0;
 }
-.alert{
+.content{
     margin: 20px;
 }
-svg{
-    margin: 20px;
+.svg{
+    text-align: center;
 }
 .node:hover{
     cursor: pointer;
