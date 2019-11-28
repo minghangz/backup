@@ -152,7 +152,7 @@ function drawTitle(g, city){
         .attr("x", 0)
         .attr("y", 30)
         .attr("font-size", 20)
-        .text("2017~2018"+city+"空气质量（AQI）（按天统计）");
+        .text("2017~2018年"+city+"空气质量（AQI）（按天统计）");
     g.append("text")
         .attr("class", "title")
         .attr("font-weight", "bold")
@@ -262,7 +262,7 @@ function drawTotalAxis(){
         .attr("x", 0)
         .attr("y", 30)
         .attr("font-size", 20)
-        .text("2017~2018北京、上海、广州、成都月平均空气质量（AQI）");
+        .text("2017~2018年北京、上海、广州、成都月平均空气质量（AQI）");
     let g = d3.select(".total").append("g");
     let gs = g.selectAll(".ex").data(["北京", "上海", "广州", "成都"])
         .join(enter=>enter.append("g").attr("class", "ex"));
