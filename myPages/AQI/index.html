@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>2017-2018年北京、上海、广州、成都空气质量可视化</title>
+        <script type="text/javascript" src="js/jquery/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="js/d3/d3.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="css/index.css">
+    </head>
+    <body>
+        <div class="details"></div>
+        <h1>2017-2018年北京、上海、广州、成都空气质量可视化</h1>
+        <div class="container">
+            <div class="alert alert-secondary alert-dismissible fade show">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                数据记录了北京、上海、广州、成都四地2017年和2018年两年的空气质量情况（AQI）<br>
+                鼠标悬浮可显示详细数据。鼠标点击左侧像素图的某行，可在右侧展开对应月份每天24小时的统计数据<br>
+                数据来源：<a href="https://beijingair.sinaapp.com/" class="alert-link">中国空气质量历史数据</a>
+            </div>
+            <svg width="1000" height="400" class="total"></svg>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#beijing">北京</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#shanghai">上海</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#guangzhou">广州</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#chengdu">成都</a>
+                </li>
+            </ul>
+            
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div id="beijing" class="container tab-pane active"><br>
+                    <svg width="1000" height="400" class="beijing"></svg>
+                </div>
+                <div id="shanghai" class="container tab-pane fade"><br>
+                    <svg width="1000" height="400" class="shanghai"></svg>
+                </div>
+                <div id="guangzhou" class="container tab-pane fade"><br>
+                    <svg width="1000" height="400" class="guangzhou"></svg>
+                </div>
+                <div id="chengdu" class="container tab-pane fade"><br>
+                    <svg width="1000" height="400" class="chengdu"></svg>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/draw.js"></script>
+    </body>
+</html>
