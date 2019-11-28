@@ -159,7 +159,7 @@ function drawTitle(g, city){
         .attr("x", 580)
         .attr("y", 30)
         .attr("font-size", 20)
-        .text("全月"+city+"空气质量（AQI）（按小时统计）");
+        .text(city+"全月空气质量（AQI）（按小时统计）");
     let g1 = g.append("g").attr("class", "scale");
     g1.selectAll("rect").data(d3.range(100))
         .join(enter=>enter.append("rect"))
