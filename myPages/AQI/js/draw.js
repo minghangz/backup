@@ -283,15 +283,18 @@ function drawTotalLine(data, city){
         .x(d => xScale(d["id"]) + total_margin.left+xScale.step()/2)
         .y(d => yScale(d["AQI"]) + total_margin.top);
     d3.select(".total").append('path')
-        .attr('class', 'line')
-        .attr('d', line(data))
+        .attr("class", "line")
+        .attr("city", city)
+        .attr("d", line(data))
         .attr("fill", "none")
+        .attr("stroke-width", 3)
         .attr("stroke", cityScale(city));
     let gs = d3.select(".total").selectAll("points").data(data)
         .join(enter=>enter.append("circle").attr("class", "points"))
-        .attr("r", 3)
+        .attr("r", 4)
         .attr("cx", d => xScale(d["id"]) + total_margin.left+xScale.step()/2)
         .attr("cy", d => yScale(d["AQI"]) + total_margin.top)
+        .attr("city", city)
         .attr("fill", cityScale(city));
     gs.on("mouseover", function(d){
         d3.select(".details")
@@ -348,6 +351,19 @@ function addEvents(g, city){
     gs.on("mouseout", function(d){
         d3.select(".details")
             .style("display", "none");
+    });
+    gs = d3.selectAll(".line, .points");
+    gs.on("mouseover", function(){
+        d3.selectAll(".line").classed("unimportant", true);
+        d3.selectAll(".points").classed("unimportant", true);
+        d3.selectAll("[city="+d3.select(this).attr("city")+"]")
+            .classed("unimportant", false)
+            .raise();
+    });
+    gs.on("mouseout", function(){
+        d3.selectAll(".line").classed("unimportant", false);
+        d3.selectAll(".points").classed("unimportant", false);
+        d3.select(".details").style("display", "none");
     });
 }
 
